@@ -3,8 +3,11 @@
 	for($k=1;$k<=10;$k++){
 		
 	$ar = range(0,$entry);//only this for best case
-	// shuffle($ar);// average case
-	// $ar = array_reverse($ar);// worst case
+	if(!empty($_GET["case"]) && $_GET["case"]==2){
+	 shuffle($ar);// average case
+	}elseif(!empty($_GET["case"]) && $_GET["case"]==3){
+	 $ar = array_reverse($ar);// worst case
+	}
 	$co = count($ar);
 	$time1 = time();
 	// var_dump($ar);
@@ -33,6 +36,16 @@
         <script src='Chart.min.js'></script>
     </head>
     <body>
+    	Analyze Insertion Sort with cloud<br><br>
+    	<form>
+    		<select name="case">
+    		<option>Select Case</option>
+    		<option value="1">Best Case</option>
+    		<option value="2">Average Case</option>
+    		<option value="3">Worst Case</option>
+    	</select>
+    	<input type="submit" name="submit" value="submit">
+    	</form>
         <!-- line chart canvas element -->
         <canvas id="buyers" width="600" height="400"></canvas>
         
